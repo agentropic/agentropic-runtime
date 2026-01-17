@@ -1,4 +1,4 @@
-# agentropic-runtime
+﻿# agentropic-runtime
 
 [![Crates.io](https://img.shields.io/crates/v/agentropic-runtime.svg)](https://crates.io/crates/agentropic-runtime)
 [![Documentation](https://docs.rs/agentropic-runtime/badge.svg)](https://docs.rs/agentropic-runtime)
