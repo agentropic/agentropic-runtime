@@ -1,0 +1,40 @@
+[package]
+name = "agentropic-runtime"
+version = "0.1.0"
+edition = "2021"
+authors = ["Agentropic <agentropic@gmail.com>"]
+license = "MIT OR Apache-2.0"
+description = "Runtime, execution engine, scheduling, and supervision for agents"
+repository = "https://github.com/agentropic/agentropic-runtime"
+documentation = "https://docs.rs/agentropic-runtime"
+keywords = ["agents", "runtime", "async", "scheduler", "supervision"]
+categories = ["simulation", "asynchronous"]
+readme = "README.md"
+
+[dependencies]
+agentropic-core = { git = "https://github.com/pycogram/agentropic-core", branch = "main" }
+agentropic-messaging = { git = "https://github.com/pycogram/agentropic-messaging", branch = "main" }
+agentropic-cognition = { git = "https://github.com/pycogram/agentropic-cognition", branch = "main" }
+
+async-trait = "0.1"
+tokio = { version = "1.0", features = ["full"] }
+futures = "0.3"
+serde = { version = "1.0", features = ["derive"] }
+thiserror = "1.0"
+tracing = "0.1"
+tracing-subscriber = "0.3"
+num_cpus = "1.16"
+serde_json = "1.0"
+
+[dev-dependencies]
+tokio-test = "0.4"
+criterion = "0.5"
+serde_json = "1.0"
+
+[[bench]]
+name = "spawn_benchmark"
+harness = false
+
+[[bench]]
+name = "throughput_benchmark"
+harness = false

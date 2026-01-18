@@ -1,0 +1,125 @@
+﻿name: CI
+
+on:
+  push:
+  pull_request:
+    branches: [ main ]
+
+env:
+  CARGO_TERM_COLOR: always
+  RUST_BACKTRACE: 1
+
+jobs:
+  test-linux:
+    name: Test on Linux
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+      with:
+        path: agentropic-runtime
+    
+    - name: Checkout agentropic-core
+      uses: actions/checkout@v3
+      with:
+        repository: agentropic/agentropic-core
+        path: agentropic-core
+    
+    - name: Checkout agentropic-messaging
+      uses: actions/checkout@v3
+      with:
+        repository: agentropic/agentropic-messaging
+        path: agentropic-messaging
+    
+    - name: Checkout agentropic-cognition
+      uses: actions/checkout@v3
+      with:
+        repository: agentropic/agentropic-cognition
+        path: agentropic-cognition
+    
+    - name: Install Rust toolchain
+      uses: dtolnay/rust-toolchain@stable
+      with:
+        components: rustfmt, clippy
+    
+    - name: Cache dependencies
+      uses: Swatinem/rust-cache@v2
+      with:
+        workspaces: agentropic-runtime
+    
+    - name: Check formatting
+      working-directory: agentropic-runtime
+      run: cargo fmt --all -- --check
+    
+    - name: Build
+      working-directory: agentropic-runtime
+      run: cargo build --verbose
+    
+    - name: Run Clippy
+      working-directory: agentropic-runtime
+      run: cargo clippy --all-targets --all-features -- -D warnings
+    
+    - name: Run tests
+      working-directory: agentropic-runtime
+      run: cargo test --verbose
+    
+    - name: Run examples
+      working-directory: agentropic-runtime
+      run: |
+        cargo run --example basic_runtime
+        cargo run --example scheduled_agents
+        cargo run --example isolated_agents
+        cargo run --example supervised_agents
+
+  test-windows:
+    name: Test on Windows
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        path: agentropic-runtime
+    - uses: actions/checkout@v3
+      with:
+        repository: agentropic/agentropic-core
+        path: agentropic-core
+    - uses: actions/checkout@v3
+      with:
+        repository: agentropic/agentropic-messaging
+        path: agentropic-messaging
+    - uses: actions/checkout@v3
+      with:
+        repository: agentropic/agentropic-cognition
+        path: agentropic-cognition
+    - uses: dtolnay/rust-toolchain@stable
+    - uses: Swatinem/rust-cache@v2
+      with:
+        workspaces: agentropic-runtime
+    - working-directory: agentropic-runtime
+      run: cargo test --verbose
+
+  test-macos:
+    name: Test on macOS
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        path: agentropic-runtime
+    - uses: actions/checkout@v3
+      with:
+        repository: agentropic/agentropic-core
+        path: agentropic-core
+    - uses: actions/checkout@v3
+      with:
+        repository: agentropic/agentropic-messaging
+        path: agentropic-messaging
+    - uses: actions/checkout@v3
+      with:
+        repository: agentropic/agentropic-cognition
+        path: agentropic-cognition
+    - uses: dtolnay/rust-toolchain@stable
+    - uses: Swatinem/rust-cache@v2
+      with:
+        workspaces: agentropic-runtime
+    - working-directory: agentropic-runtime
+      run: cargo test --verbose
