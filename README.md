@@ -10,7 +10,7 @@
 
 ---
 
-## 🎯 Purpose
+## Purpose
 
 This crate provides:
 
@@ -22,7 +22,7 @@ This crate provides:
 
 ---
 
-## 🧩 Core Concepts
+## Core Concepts
 
 ### Runtime
 
@@ -116,7 +116,7 @@ runtime.supervise(agent, supervisor).await?;
 
 ---
 
-## 📦 What's Included
+## What's Included
 
 ### Core Components
 
@@ -159,7 +159,7 @@ runtime.supervise(agent, supervisor).await?;
 
 ---
 
-## 🚀 Usage
+## Usage
 
 Add to your `Cargo.toml`:
 ```toml
@@ -429,7 +429,7 @@ async fn with_metrics() -> Result<(), Box<dyn std::error::Error>> {
 
 ---
 
-## ⚡ Performance
+## Performance
 
 ### Benchmarks
 
@@ -448,7 +448,7 @@ async fn with_metrics() -> Result<(), Box<dyn std::error::Error>> {
 
 ---
 
-## 🔗 Related Crates
+## Related Crates
 
 - **[agentropic-core](../agentropic-core)** - Agent primitives and traits
 - **[agentropic-messaging](../agentropic-messaging)** - Agent communication
@@ -457,7 +457,7 @@ async fn with_metrics() -> Result<(), Box<dyn std::error::Error>> {
 
 ---
 
-## 📚 Documentation
+## Documentation
 
 Full API documentation is available on [docs.rs](https://docs.rs/agentropic-runtime).
 
@@ -465,7 +465,7 @@ For guides and tutorials, see [agentropic-docs](https://github.com/agentropic/ag
 
 ---
 
-## 🎓 References
+## References
 
 This crate is inspired by:
 
@@ -476,13 +476,13 @@ This crate is inspired by:
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 Contributions are welcome! Please see the [contributing guidelines](../../CONTRIBUTING.md).
 
 ---
 
-## 📜 License
+## License
 
 Licensed under either of:
 
@@ -493,7 +493,7 @@ at your option.
 
 ---
 
-## 🌟 Status
+## Status
 
 **Active Development** - This crate is under active development. APIs may change before 1.0 release.
 
