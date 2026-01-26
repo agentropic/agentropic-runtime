@@ -6,7 +6,6 @@ use tokio::sync::RwLock;
 
 // Shared AgentEntry struct (make it public for handle.rs)
 #[derive(Clone)]
-
 #[allow(dead_code)]
 pub(crate) struct AgentEntry {
     pub id: AgentId,
@@ -93,7 +92,7 @@ impl Runtime {
         RuntimeHandle::new(self.agents.clone(), self.running.clone())
     }
 
-    /// Shutdown the runtime
+    /// Shutdown the run-time
     pub async fn shutdown(self) -> Result<(), RuntimeError> {
         self.stop().await?;
         let mut agents = self.agents.write().await;
