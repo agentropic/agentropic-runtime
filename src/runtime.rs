@@ -6,6 +6,8 @@ use tokio::sync::RwLock;
 
 // Shared AgentEntry struct (make it public for handle.rs)
 #[derive(Clone)]
+
+#[allow(dead_code)]
 pub(crate) struct AgentEntry {
     pub id: AgentId,
     pub name: String,
